@@ -27,7 +27,7 @@ spec:
     - dns01:
         cloudflare:
           email: nickolaj1177@gmail.com
-          apiTokenSecretRef:
+          apiKeySecretRef:
             name: cloudflare-api-token-secret
             namespace: kube-system
             key: api-token
@@ -50,7 +50,7 @@ spec:
     - dns01:
         cloudflare:
           email: nickolaj1177@gmail.com
-          apiTokenSecretRef:
+          apiKeySecretRef:
             name: cloudflare-api-token-secret
             namespace: kube-system
             key: api-token
