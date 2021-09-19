@@ -26,18 +26,26 @@
 4) Read settings
     1) `vault read auth/approle/role/argocd/role-id` = your_role_id
     1) `vault write -force auth/approle/role/my-role/secret-id` = your_secret_id
-3) Deploy yaml 
-```yaml
+5) Deploy yaml 
+```bash
+cat <<EOF | kubectl apply -f -
 kind: Secret
 apiVersion: v1
 metadata:
   name: argocd-vault-plugin-credentials
   namespace: argocd
 type: Opaque
-data:
+stringData:
   AVP_AUTH_TYPE: approle
   AVP_ROLE_ID: <your_role_id>
   AVP_SECRET_ID: <your_secret_id>
   AVP_TYPE: vault
   AVP_VAULT_ADDR: http://vault.vault
+EOF
+```
+6) Run `kubectl apply -f setup/`
+
+# Secrets
+```
+traefik/http-auth/htpasswd-admin: $(htpasswd -nb username password)
 ```
