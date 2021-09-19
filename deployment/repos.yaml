@@ -25,3 +25,17 @@ metadata:
     argocd.argoproj.io/secret-type: repository
   name: repo-prometheus-community
   namespace: argocd
+---
+apiVersion: v1
+data:
+  name: dHJhZWZpaw==
+  type: aGVsbQ==
+  url: aHR0cHM6Ly9oZWxtLnRyYWVmaWsuaW8vdHJhZWZpaw==
+kind: Secret
+metadata:
+  annotations:
+    managed-by: argocd.argoproj.io
+  labels:
+    argocd.argoproj.io/secret-type: repository
+  name: repo-traefik
+  namespace: argocd
