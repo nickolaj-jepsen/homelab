@@ -24,12 +24,11 @@ spec:
     # Enable the HTTP-01 challenge provider
     solvers:
     - dns01:
-        ingress:
-          cloudflare:
-            email: nickolaj1177@gmail.com
-            apiTokenSecretRef:
-              name: cloudflare-api-token-secret
-              key: api-token
+        cloudflare:
+          email: nickolaj1177@gmail.com
+          apiTokenSecretRef:
+            name: cloudflare-api-token-secret
+            key: api-token
 ---
 apiVersion: cert-manager.io/v1
 kind: Issuer
@@ -47,9 +46,8 @@ spec:
     # Enable the HTTP-01 challenge provider
     solvers:
     - dns01:
-        ingress:
-          cloudflare:
-            email: nickolaj1177@gmail.com
-            apiTokenSecretRef:
-              name: cloudflare-api-token-secret
-              key: api-token
+        cloudflare:
+          email: nickolaj1177@gmail.com
+          apiTokenSecretRef:
+            name: cloudflare-api-token-secret
+            key: api-token
