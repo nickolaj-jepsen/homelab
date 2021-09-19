@@ -1,0 +1,6 @@
+traefik:
+  ports:
+    web:
+      exposedPort: 8000
+    websecure:
+      exposedPort: 8443

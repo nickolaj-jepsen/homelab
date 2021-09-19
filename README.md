@@ -7,4 +7,5 @@
 
 ## Argocd
 
-1) Run `kubectl apply -f setup/`
+1) Setup this repo in argocd
+2) Run `kubectl apply -f setup/`
