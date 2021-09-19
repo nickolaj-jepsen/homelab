@@ -2821,18 +2821,15 @@ metadata:
     app.kubernetes.io/part-of: argocd
   name: argocd-cm
 data:
-  configManagementPlugins: |-
+  configManagementPlugins: |
     - name: argocd-vault-plugin
       generate:
         command: ["argocd-vault-plugin"]
         args: ["generate", "./"]
     - name: argocd-vault-plugin-helm
-      init:
-        command: [sh, -c]
-        args: ["helm dependency build"]
       generate:
         command: ["sh", "-c"]
-        args: ["helm template $ARGOCD_APP_NAME . | argocd-vault-plugin generate -"]
+        args: ["helm template $ARGOCD_APP_NAME . --include-crds | argocd-vault-plugin generate -"]
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -3311,14 +3308,13 @@ spec:
           secretName: argocd-repo-server-tls
       initContainers:
       - name: download-tools
-        image: alpine:3.8
+        image: alpine:3.14
         command: [sh, -c]
         args:
-          - wget -O argocd-vault-plugin
+          - wget -O /custom-tools/argocd-vault-plugin
             https://github.com/IBM/argocd-vault-plugin/releases/download/v1.3.1/argocd-vault-plugin_1.3.1_linux_amd64
 
-            chmod +x argocd-vault-plugin &&\
-            mv argocd-vault-plugin /custom-tools/
+            chmod +x /custom-tools/argocd-vault-plugin
         volumeMounts:
           - mountPath: /custom-tools
             name: custom-tools

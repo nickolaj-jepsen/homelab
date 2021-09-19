@@ -22,10 +22,10 @@
 
 1) Setup vault
 2) Enable approle
-3) create new role `vault write auth/approle/role/argocd secret_id_ttl=10m token_num_uses=10 token_ttl=20m token_max_ttl=30m secret_id_num_uses=40`
+3) create new role `vault write -force auth/approle/role/argocd`
 4) Read settings
     1) `vault read auth/approle/role/argocd/role-id` = your_role_id
-    1) `vault write -force auth/approle/role/my-role/secret-id` = your_secret_id
+    1) `vault write -force auth/approle/role/argocd/secret-id` = your_secret_id
 5) Deploy yaml 
 ```bash
 cat <<EOF | kubectl apply -f -
@@ -37,13 +37,16 @@ metadata:
 type: Opaque
 stringData:
   AVP_AUTH_TYPE: approle
-  AVP_ROLE_ID: <your_role_id>
-  AVP_SECRET_ID: <your_secret_id>
+  AVP_ROLE_ID: ff3f67af-e4dc-002f-f311-aa710cc310fa
+  AVP_SECRET_ID: 09a0864c-e98f-3708-86a2-512e9d1a2939
   AVP_TYPE: vault
-  AVP_VAULT_ADDR: http://vault.vault
+  VAULT_ADDR: http://vault.vault:8200
 EOF
 ```
 6) Run `kubectl apply -f setup/`
+7) Create policy "read-all" `path "kv/data/*" {  capabilities = ["read"]}`
+8) Add policy to generated entity
+
 
 # Secrets
 ```
