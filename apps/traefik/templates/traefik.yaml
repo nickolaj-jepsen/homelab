@@ -1,11 +1,24 @@
 # dashboard.yaml
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: traefik-cert
+spec:
+  commonName: "traefik.k8s.nickolaj.com"
+  secretName: traefik-cert
+  dnsNames:
+    - "traefik.k8s.nickolaj.com"
+  issuerRef:
+    name: letsencrypt # it's a precreated clusterissuer name, can also be "letsencrypt-staging" for testing.
+    kind: ClusterIssuer
+---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: dashboard
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
     - match: Host(`traefik.k8s.nickolaj.com`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
       kind: Rule
@@ -14,3 +27,5 @@ spec:
       services:
         - name: api@internal
           kind: TraefikService
+      tls:
+        secretName: traefik-cert
