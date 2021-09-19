@@ -65,5 +65,5 @@ metadata:
     managed-by: argocd.argoproj.io
   labels:
     argocd.argoproj.io/secret-type: repository
-  name: repo-jetstack
+  name: repo-hashicorp
   namespace: argocd
