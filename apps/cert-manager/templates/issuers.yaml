@@ -9,7 +9,7 @@ stringData:
   api-token: <api-key>
 ---
 apiVersion: cert-manager.io/v1
-kind: Issuer
+kind: ClusterIssuer
 metadata:
   name: letsencrypt-staging
 spec:
@@ -31,7 +31,7 @@ spec:
             key: api-token
 ---
 apiVersion: cert-manager.io/v1
-kind: Issuer
+kind: ClusterIssuer
 metadata:
   name: letsencrypt
 spec:
