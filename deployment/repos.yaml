@@ -39,3 +39,17 @@ metadata:
     argocd.argoproj.io/secret-type: repository
   name: repo-traefik
   namespace: argocd
+---
+apiVersion: v1
+data:
+  name: amV0c3RhY2s=
+  type: aGVsbQ==
+  url: aHR0cHM6Ly9jaGFydHMuamV0c3RhY2suaW8=
+kind: Secret
+metadata:
+  annotations:
+    managed-by: argocd.argoproj.io
+  labels:
+    argocd.argoproj.io/secret-type: repository
+  name: repo-jetstack
+  namespace: argocd
