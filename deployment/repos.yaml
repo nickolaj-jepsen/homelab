@@ -53,3 +53,17 @@ metadata:
     argocd.argoproj.io/secret-type: repository
   name: repo-jetstack
   namespace: argocd
+---
+apiVersion: v1
+data:
+  name: aGFzaGljb3Jw
+  type: aGVsbQ==
+  url: aHR0cHM6Ly9oZWxtLnJlbGVhc2VzLmhhc2hpY29ycC5jb20=
+kind: Secret
+metadata:
+  annotations:
+    managed-by: argocd.argoproj.io
+  labels:
+    argocd.argoproj.io/secret-type: repository
+  name: repo-jetstack
+  namespace: argocd
