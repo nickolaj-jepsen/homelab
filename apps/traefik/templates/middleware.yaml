@@ -11,7 +11,7 @@ kind: Secret
 metadata:
   name: traefik-basic-auth-secret
   annotations:
-    avp.kubernetes.io/path: "kv/traefik/http-auth"
+    avp.kubernetes.io/path: "kv/data/traefik/http-auth"
 data:
   users: |2
     <htpasswd-admin>
