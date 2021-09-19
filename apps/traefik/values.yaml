@@ -6,3 +6,6 @@ traefik:
       exposedPort: 8443
   dashboard:
     enable: true
+  providers:
+    kubernetesCRD:
+      {}
