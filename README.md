@@ -9,3 +9,8 @@
 
 1) Setup this repo in argocd
 2) Run `kubectl apply -f setup/`
+
+
+## Longhorn
+
+1) disable local-storage default `kubectl patch storageclass local-path -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'`
