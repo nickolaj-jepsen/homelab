@@ -5,7 +5,9 @@ traefik:
     websecure:
       exposedPort: 8443
   dashboard:
-    enable: true
+    enabled: true
+  rbac:
+    enabled: true
   providers:
     kubernetesCRD:
       {}
