@@ -51,4 +51,5 @@ EOF
 # Secrets
 ```
 traefik/http-auth/htpasswd-admin: $(htpasswd -nb username password)
+cert-manager/cloudflare/api-key: $(cloudflare > User Profile > API Tokens > API Keys > Global API Key > View)
 ```
