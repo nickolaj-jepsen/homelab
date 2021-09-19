@@ -2,7 +2,8 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: cloudflare-api-key-secret
-  avp.kubernetes.io/path: "kv/data/cert-manager/cloudflare/"
+  annotations:
+    avp.kubernetes.io/path: "kv/data/cert-manager/cloudflare/"
 type: Opaque
 stringData:
   api-token: <api-key>
