@@ -13,4 +13,5 @@
 
 ## Longhorn
 
-1) disable local-storage default `kubectl patch storageclass local-path -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'`
+1) Setup disks in longhorn admin
+2) disable local-storage default `kubectl patch storageclass local-path -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'`
