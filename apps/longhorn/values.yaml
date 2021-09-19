@@ -1,0 +1,5 @@
+longhorn:
+  persistence:
+    defaultClassReplicaCount: 1
+  defaultSettings:
+    replicaSoftAntiAffinity: true
