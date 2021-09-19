@@ -9,9 +9,9 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    chart: vault
-    repoURL: https://helm.releases.hashicorp.com
-    targetRevision: 0.16.0
+    path: apps/vault
+    repoURL: git@github.com:nickolaj-jepsen/homelab
+    targetRevision: HEAD
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
