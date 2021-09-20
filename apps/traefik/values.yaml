@@ -4,5 +4,7 @@ traefik:
       exposedPort: 8000
     websecure:
       exposedPort: 8443
+    metrics:
+      expose: true
   additionalArguments:
     - "--metrics.prometheus=true"
