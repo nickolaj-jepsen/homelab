@@ -1,0 +1,16 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: prometheus
+  namespace: monitoring
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`prometheus.k8s.nickolaj.com`)
+      kind: Rule
+      middlewares:
+      - name: traefik-basic-auth
+      services:
+        - name: prometheus-operated
+          port: 9090
