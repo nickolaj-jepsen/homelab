@@ -3,10 +3,10 @@ kind: Certificate
 metadata:
   name: argocd-cert
 spec:
-  commonName: "prometheus.k8s.nickolaj.com"
-  secretName: prometheus-cert
+  commonName: "longhorn.k8s.nickolaj.com"
+  secretName: longhorn-cert
   dnsNames:
-    - "prometheus.k8s.nickolaj.com"
+    - "longhorn.k8s.nickolaj.com"
   issuerRef:
     name: letsencrypt # it's a precreated clusterissuer name, can also be "letsencrypt-staging" for testing.
     kind: ClusterIssuer
@@ -14,18 +14,18 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: prometheus
+  name: longhorn
   namespace: monitoring
 spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`prometheus.k8s.nickolaj.com`)
+    - match: Host(`longhorn.k8s.nickolaj.com`)
       kind: Rule
       middlewares:
       - name: traefik-basic-auth
       services:
-        - name: prometheus-operated
+        - name: longhorn-operated
           port: 9090
   tls:
-    secretName: prometheus-cert
+    secretName: longhorn-cert
