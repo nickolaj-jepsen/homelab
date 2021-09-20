@@ -47,10 +47,6 @@ EOF
 7) Create policy "read-all" `path "kv/data/*" {  capabilities = ["read"]}`
 8) Add policy to generated entity
 
-## Traefik
-
-1) Patch service account `kubectl patch clusterrolebinding traefik -p '{"subjects": [{"namespace":"traefik", "name": "traefik", "kind": "ServiceAccount"}]}'`
-
 # Secrets
 ```
 traefik/http-auth/htpasswd-admin: $(htpasswd -nb username password)

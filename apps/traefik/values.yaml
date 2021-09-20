@@ -5,7 +5,7 @@ traefik:
     websecure:
       exposedPort: 8443
     metrics:
-      port: 9101
+      exposedPort: 9101
       expose: true
   additionalArguments:
     - "--metrics.prometheus=true"
