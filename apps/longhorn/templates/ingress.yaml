@@ -24,7 +24,7 @@ spec:
       middlewares:
       - name: traefik-basic-auth
       services:
-        - name: longhorn-operated
-          port: 9090
+        - name: longhorn-frontend
+          port: 80
   tls:
     secretName: longhorn-cert
