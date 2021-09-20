@@ -2821,6 +2821,12 @@ metadata:
     app.kubernetes.io/part-of: argocd
   name: argocd-cm
 data:
+  resource.customizations: |
+    admissionregistration.k8s.io/MutatingWebhookConfiguration:
+      ignoreDifferences: |
+        jqPathExpressions:
+        - '.webhooks[]?.clientConfig.caBundle'
+        - '.webhooks[]?.failurePolicy'
   configManagementPlugins: |
     - name: argocd-vault-plugin
       generate:
@@ -2829,7 +2835,7 @@ data:
     - name: argocd-vault-plugin-helm
       generate:
         command: ["sh", "-c"]
-        args: ["helm template $ARGOCD_APP_NAME . --include-crds | argocd-vault-plugin generate -"]
+        args: ["helm template $ARGOCD_APP_NAME . --include-crds --namespace $ARGOCD_APP_NAMESPACE | argocd-vault-plugin generate -"]
 ---
 apiVersion: v1
 kind: ConfigMap
