@@ -3,3 +3,9 @@ kube-prometheus-stack:
     enabled: true
     plugins:
     - grafana-piechart-panel
+    persistence:
+      enabled: true
+      storageClassName: longhorn
+      size: 10Gi
+      accessModes:
+        - ReadWriteOnce
