@@ -1,9 +1,8 @@
 apiVersion: monitoring.coreos.com/v1
-kind: PodMonitor
+kind: ServiceMonitor
 metadata:
   name: traefik-pod-monitor
 spec:
-  jobLabel: traefik-metrics
   namespaceSelector:
     matchNames:
       - traefik
