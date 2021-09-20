@@ -1,4 +1,4 @@
 grafana:
+  enabled: true
   plugins:
-  - grafana-clock-panel
   - grafana-piechart-panel
