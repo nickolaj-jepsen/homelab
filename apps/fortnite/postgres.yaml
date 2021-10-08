@@ -54,12 +54,10 @@ spec:
                   name: postgres-secret
                   key: password
           volumeMounts:
-            - mountPath: "/var/lib/postgresql/data"
-              name: "postgres"
+            - mountPath: /var/lib/postgresql/data
+              name: postgredb
       volumes:
-          name: postgres-volume
-          storageClassName: longhorn
-          resources:
-            requests:
-              storage: 10Gi
-      
+        - name: postgredb
+          persistentVolumeClaim:
+            claimName: postgres-pv-claim
+            
