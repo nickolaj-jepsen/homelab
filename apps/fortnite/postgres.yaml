@@ -37,7 +37,7 @@ spec:
             - mountPath: "/var/lib/postgresql/data"
               name: "postgres"
       volumes:
-          name: postgres
+          name: postgres-volume
           storageClassName: longhorn
           resources:
             requests:
