@@ -38,3 +38,7 @@ spec:
               name: "postgres"
       volumes:
           name: postgres
+          storageClassName: longhorn
+          resources:
+            requests:
+              storage: 10Gi
