@@ -7,20 +7,40 @@ metadata:
 stringData:
   password: <password>
 ---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: postgres-pv-claim
+  labels:
+    app: postgres
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi
+---
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: postgres
 spec:
+  selector:
+    matchLabels:
+      app: postgres
+  strategy:
+    type: Recreate
   replicas: 1
   template:
     metadata:
       labels:
-        service: postgres
+        app: postgres
     spec:
       containers:
         - name: postgres
           image: postgres:14
+          imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: 5432
           env:
@@ -42,3 +62,4 @@ spec:
           resources:
             requests:
               storage: 10Gi
+      
