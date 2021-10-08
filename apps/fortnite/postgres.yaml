@@ -21,7 +21,7 @@ spec:
     requests:
       storage: 5Gi
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: postgres
@@ -39,7 +39,7 @@ spec:
     spec:
       containers:
         - name: postgres
-          image: postgres:14
+          image: postgres:13
           imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: 5432
