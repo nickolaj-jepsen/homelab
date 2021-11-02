@@ -26,21 +26,24 @@ spec:
       labels:
         app: monero
     spec:
+      securityContext:
+        runAsUser: 1000
       containers:
       - name: monero
-        image: varnav/monero
+        image: xmrto/monero
+        args: ["--rpc-restricted-bind-ip=0.0.0.0", "--rpc-restricted-bind-port=18089", "--no-igd", "--no-zmq", "--enable-dns-blocklist", "--data-dir=/monero"]
         ports:
         - name: node
           containerPort: 18080
         - name: rpc
-          containerPort: 18081
+          containerPort: 18089
         resources:
           limits:
             memory: "4Gi"
             cpu: "200m"
         volumeMounts:
           - name: monero-data
-            mountPath: /home/monero/
+            mountPath: /monero
       # initContainers:
       # - name: init-ulimitn
       #   image: busybox
@@ -69,5 +72,5 @@ spec:
     targetPort: 18080
   - protocol: TCP
     name: rpc
-    port: 18081
-    targetPort: 18081
+    port: 18089
+    targetPort: 18089
