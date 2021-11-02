@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: monero
+  namespace: argocd
+spec:
+  destination:
+    namespace: monero
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: apps/monero
+    repoURL: git@github.com:nickolaj-jepsen/homelab
+    targetRevision: HEAD
+    plugin:
+      name: argocd-vault-plugin
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
