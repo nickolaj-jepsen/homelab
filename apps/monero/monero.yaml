@@ -61,9 +61,7 @@ kind: Service
 metadata:
   name: monero
 spec:
-  type: ClusterIP
-  # Uncomment the below line to create a Headless Service
-  # clusterIP: None
+  type: NodePort
   selector:
     app: monero
   ports:
@@ -74,4 +72,5 @@ spec:
   - protocol: TCP
     name: rpc
     port: 18089
+    nodePort: 30080
     targetPort: 18089
