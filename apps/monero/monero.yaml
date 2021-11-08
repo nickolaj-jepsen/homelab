@@ -32,7 +32,7 @@ spec:
       containers:
       - name: monero
         image: xmrto/monero
-        args: ["--rpc-restricted-bind-ip=0.0.0.0", "--rpc-restricted-bind-port=18089", "--no-igd", "--no-zmq", "--enable-dns-blocklist", "--data-dir=/monero", "--log-level=2"]
+        args: ["--rpc-restricted-bind-ip=0.0.0.0", "--rpc-restricted-bind-port=18089", "--no-igd", "--no-zmq", "--enable-dns-blocklist", "--data-dir=/monero", "--log-level", '2']
         ports:
         - name: node
           containerPort: 18080
