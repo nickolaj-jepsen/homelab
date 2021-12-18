@@ -1,0 +1,28 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: keycloak-cert
+spec:
+  commonName: "keycloak.k8s.nickolaj.com"
+  secretName: keycloak-cert
+  dnsNames:
+    - "keycloak.k8s.nickolaj.com"
+  issuerRef:
+    name: letsencrypt # it's a precreated clusterissuer name, can also be "letsencrypt-staging" for testing.
+    kind: ClusterIssuer
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: keycloak
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`keycloak.k8s.nickolaj.com`)
+      kind: Rule
+      services:
+        - name: keycloak-http
+          port: 80
+  tls:
+    secretName: keycloak-cert
