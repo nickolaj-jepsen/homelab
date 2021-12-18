@@ -18,3 +18,9 @@ keycloak:
         value: "2"
       - name: CACHE_OWNERS_AUTH_SESSIONS_COUNT
         value: "2"
+traefik-forward-auth:
+  providers:
+    oidc:
+      enabled: "true"
+      issuerUrl: https://keycloak.k8s.nickolaj.com:8443/auth/realms/master/.well-known/openid-configuration
+      clientId: traefik
