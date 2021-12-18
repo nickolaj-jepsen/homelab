@@ -19,6 +19,8 @@ keycloak:
       - name: CACHE_OWNERS_AUTH_SESSIONS_COUNT
         value: "2"
 traefik-forward-auth:
+  default:
+    provider: oidc
   providers:
     oidc:
       enabled: "true"
