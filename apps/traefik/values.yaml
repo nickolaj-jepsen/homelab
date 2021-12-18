@@ -9,5 +9,3 @@ traefik:
       expose: true
   additionalArguments:
     - "--metrics.prometheus=true"
-    - "--authSources.oidcSource.oidc.issuer=https://keycloak.k8s.nickolaj.com:8443/auth/realms/master/.well-known/openid-configuration"
-    - "--authSources.oidcSource.oidc.clientID=traefik"
