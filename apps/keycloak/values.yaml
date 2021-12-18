@@ -21,6 +21,8 @@ keycloak:
 traefik-forward-auth:
   default:
     provider: oidc
+  cookie:
+    domain: k8s.nickolaj.com
   providers:
     oidc:
       enabled: "true"
