@@ -51,4 +51,7 @@ EOF
 ```
 traefik/http-auth/htpasswd-admin: $(htpasswd -nb username password)
 cert-manager/cloudflare/api-key: $(cloudflare > User Profile > API Tokens > API Keys > Global API Key > View)
+keycloak/traefik-forward-auth/issuer-url: $("https://keycloak.k8s.nickolaj.com:8443/auth/realms/master")
+keycloak/traefik-forward-auth/client-id: $(keycloak > Client > create > Client ID)
+keycloak/traefik-forward-auth/client-secret: $(keycloak > Client > "Client ID" > Creditentials > Secret))
 ```

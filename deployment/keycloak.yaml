@@ -12,6 +12,8 @@ spec:
     path: apps/keycloak
     repoURL: git@github.com:nickolaj-jepsen/homelab
     targetRevision: HEAD
+    plugin:
+      name: argocd-vault-plugin-helm
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
