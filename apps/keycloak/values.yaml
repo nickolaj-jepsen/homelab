@@ -28,4 +28,4 @@ traefik-forward-auth:
       enabled: "true"
   envFrom:
     - secretRef:
-      name: keycloak-oidc-secret
+        name: keycloak-oidc-secret
