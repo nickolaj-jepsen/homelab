@@ -1,0 +1,28 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: vault-cert
+spec:
+  commonName: "vault.k8s.nickolaj.com"
+  secretName: vault-cert
+  dnsNames:
+    - "vault.k8s.nickolaj.com"
+  issuerRef:
+    name: letsencrypt # it's a precreated clusterissuer name, can also be "letsencrypt-staging" for testing.
+    kind: ClusterIssuer
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: vault
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`vault.k8s.nickolaj.com`)
+      kind: Rule
+      services:
+        - name: vault
+          port: 8200
+  tls:
+    secretName: vault-cert
