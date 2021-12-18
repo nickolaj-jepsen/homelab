@@ -7,7 +7,7 @@ keycloak:
       - name: KEYCLOAK_HTTPS_PORT
         value: "443"
       - name: KEYCLOAK_HOSTNAME
-        value: keycloak.k8s.nickolaj.com
+        value: keycloak.k8s.nickolaj.com:8443
       - name: KEYCLOAK_FRONTEND_URL
         value: https://keycloak.k8s.nickolaj.com:8443/auth
       - name: KEYCLOAK_LOGLEVEL
