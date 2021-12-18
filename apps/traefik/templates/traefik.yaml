@@ -19,7 +19,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`traefik.k8s.nickolaj.com`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+    - match: Host(`traefik.k8s.nickolaj.com`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`) || PathPrefix(`/_oauth`))
       kind: Rule
       middlewares:
       - name: traefik-forwardauth
