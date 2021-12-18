@@ -22,7 +22,7 @@ spec:
     - match: Host(`traefik.k8s.nickolaj.com`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
       kind: Rule
       middlewares:
-      - name: traefik-basic-auth
+      - name: traefik-forwardauth
       services:
         - name: api@internal
           kind: TraefikService

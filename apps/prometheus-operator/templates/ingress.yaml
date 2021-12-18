@@ -22,7 +22,7 @@ spec:
     - match: Host(`prometheus.k8s.nickolaj.com`)
       kind: Rule
       middlewares:
-      - name: traefik-basic-auth
+      - name: traefik-forwardauth
       services:
         - name: prometheus-operated
           port: 9090
@@ -53,7 +53,7 @@ spec:
     - match: Host(`grafana.k8s.nickolaj.com`)
       kind: Rule
       middlewares:
-      - name: traefik-basic-auth
+      - name: traefik-forwardauth
       services:
         - name: prometheus-operator-grafana
           port: 80
