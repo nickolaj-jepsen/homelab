@@ -1,6 +1,15 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
+  name: traefik-forwardauth
+spec:
+  forwardAuth:
+    address: http://keycloak-traefik-forward-auth.keycloak:4181
+    authResponseHeaders: X-Forwarded-User
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
   name: traefik-basic-auth
 spec:
   basicAuth:

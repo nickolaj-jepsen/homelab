@@ -23,6 +23,7 @@ spec:
       kind: Rule
       middlewares:
       - name: traefik-basic-auth
+      - name: traefik-forwardauth
       services:
         - name: longhorn-frontend
           port: 80
