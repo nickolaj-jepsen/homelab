@@ -26,3 +26,4 @@ traefik-forward-auth:
       enabled: "true"
       issuerUrl: https://keycloak.k8s.nickolaj.com:8443/auth/realms/master/.well-known/openid-configuration
       clientId: traefik
+      clientSecret: cb8cf02f-192c-473e-a5b1-cd2aa9d5ca46
