@@ -1,9 +1,9 @@
 dependencies:
 - name: keycloak
   repository: https://codecentric.github.io/helm-charts
-  version: 16.0.4
+  version: 16.0.5
 - name: traefik-forward-auth
   repository: https://k8s-at-home.com/charts/
   version: 1.0.10
-digest: sha256:358dd49f13f366accba97f4d43515c113db93440cf97ba1436f9c45577edd70d
-generated: "2021-12-18T22:26:19.044142837+01:00"
+digest: sha256:500c72c60acb886b25d041091f78a0bd763701c852a15671d972d9760d346333
+generated: "2022-01-10T15:12:10.468009315Z"
